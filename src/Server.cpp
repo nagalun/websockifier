@@ -24,10 +24,13 @@ Server::Server(std::string basePath)
 	h.onHttpRequest([](uWS::HttpResponse * res, uWS::HttpRequest req, char * data, sz_t len, sz_t rem) {
 		static const char * web =
 			"<!DOCTYPE html>"
+			"<html>"
 			"<head>"
-			"<script>w=new WebSocket(location.href.replace('http', 'ws'));"
-			"w.onmessage = m => document.body.append(m.data, document.createElement('br'));"
-			"w.onclose = m => document.body.append('-- CONNECTION CLOSED');</script>"
+				"<script>"
+					"w=new WebSocket(location.href.replace('http', 'ws'));"
+					"w.onmessage = m => document.body.append(m.data, document.createElement('br'));"
+					"w.onclose = m => document.body.append('-- CONNECTION CLOSED');"
+				"</script>"
 			"</head>"
 			"<body style=\"font-family: monospace;\"></body>"
 			"</html>";
